@@ -4,8 +4,6 @@ Introduccion
 ¿Qué es una red neuronal?
 Una red neuronal es un modelo computacional inspirado en el funcionamiento del cerebro humano. Está compuesta por un conjunto interconectado de nodos llamados *neuronas artificiales*. Estas neuronas artificiales se organizan en capas, donde cada capa se conecta con la siguiente mediante conexiones llamadas *pesos*. Su entrenamiento permite realizar una amplia gama de tareas, como reconocimiento de patrones, clasificación de datos o predicciones.
 
-![esquemared](https://github.com/julioelias-o/MCD/assets/134743799/00c7b737-889d-4ff2-9539-4fcb23c6b7cb)
-
 La red neuronal procesa información de entrada a través de estas conexiones y realiza cálculos para producir una salida. Cada neurona en una capa toma como entrada los valores de salida de las neuronas de la capa anterior, realiza una operación matemática y produce un valor de salida. La operación matemática que realiza una neurona es multiplicar cada valor de entrada por un peso asociado y luego sumarlos. Posteriormente, se aplica una función de activación a la suma ponderada para introducir no linealidad en la red.
 
 La función de activación puede variar, pero ejemplos comunes son la función sigmoide (que produce valores entre 0 y 1), la función ReLU (que devuelve 0 para valores negativos y el valor original para valores positivos), o la función tangente hiperbólica (que produce valores entre -1 y 1).
@@ -23,3 +21,6 @@ Las redes neuronales pueden predecir diversas propiedades químicas de compuesto
 
 Análisis espectroscópico
 Las redes neuronales se aplican en la interpretación de datos espectroscópicos, como espectros de resonancia magnética nuclear (RMN) o espectros infrarrojos (IR), para identificar y caracterizar compuestos químicos. Estas redes pueden acelerar el análisis y mejorar la precisión en la identificación de sustancias químicas complejas.
+
+Esquema general de las matematicas involucradas en las redes neuronales
+![esquemared](https://github.com/julioelias-o/MCD/assets/134743799/00c7b737-889d-4ff2-9539-4fcb23c6b7cb)
