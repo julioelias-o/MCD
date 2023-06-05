@@ -45,3 +45,8 @@ Siendo la funcion de perdida una funcion continua, es posible calcular las deriv
 
 Una vez terminado este proceso de entrenamiento, que puede verse como el ajuste de estos pesos en la red neuronal, osea encontrar una combinación de pesos que lleven a la red a hacer predicciónes lo más cercanas a la realidad posible.
 
+## Resultado en la optimización de la producción de PHB
+En esta aplicación, se tomaron componentes del medio como parametros para los inputs, consto de 20 sets de valores iniciales. Una vez entrenado el modelo, se comparo con los valores experimentales demostrando muy buenas estimaciones de la concentración final de PHB y de biomasa. 
+
+![res](https://github.com/julioelias-o/MCD/assets/134743799/fef303b5-f4aa-466d-9ad3-d05fd068d327)
+
