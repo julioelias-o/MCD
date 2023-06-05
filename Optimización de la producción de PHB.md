@@ -7,3 +7,10 @@ Uno de los principales factores que impide la aplicación comercial de PHB es su
 Se han utilizado varios enfoques para la optimización del proceso de producción de PHB, el tradicional que es mediante la variación de las concentraciones de los sustratos en el medio, una a la vez, pero resulta en un proceso laborioso y lento. La optimización de las variables del medio para que se pueda desarrollar el bioproceso, tiene que ser considerado bajo el análisis estratégico para la producción de PHB rentable. Con este proyecto se pretende desarrollar un modelo de redes neurnoales para encontrar la concentración optima de dichas variables, que lleven a una producción de PHB lo más alta posible.
 
 ## Modelado de redes neuronales artificiales para la optimización de las variables del medio
+Para la realización de este proyecto se utilizó una arquitectura feed foward, también conocida como multilayer perception (MLP), con el algoritmo de back propagation, para construir los modelos predictivos con concentraciones escaladas de tres variables medias como input, y las concentraciones de biomasa y PHB como output.
+
+Todas las entradas y salidas se normalizan dentro de un rango uniforme de (0,1 a 0,9) para garantizar la uniformidad durante el proceso de entrenamiento. Las nuevas variables escaladas se calculan mediante la ecuación. Después del proceso de entrenamiento, el valor optimizado de la variable se vuelve a reescalar para obtener las unidades deseadas.
+
+![image](https://github.com/julioelias-o/MCD/assets/134743799/e5675aad-f845-4508-8c01-ef7ee55a85b0)
+![image](https://github.com/julioelias-o/MCD/assets/134743799/50adbd38-162d-4fa3-b7f9-6710aec5213a)
+## Esquema general de la red neuronal
