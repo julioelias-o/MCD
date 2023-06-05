@@ -14,3 +14,8 @@ Todas las entradas y salidas se normalizan dentro de un rango uniforme de (0,1 a
 ![image](https://github.com/julioelias-o/MCD/assets/134743799/e5675aad-f845-4508-8c01-ef7ee55a85b0)
 ![image](https://github.com/julioelias-o/MCD/assets/134743799/50adbd38-162d-4fa3-b7f9-6710aec5213a)
 ## Esquema general de la red neuronal
+![Diagramas de flujo](https://github.com/julioelias-o/MCD/assets/134743799/64d5c8f7-6032-4e8b-bf3a-2bf0e6583a1a)
+
+El número de neuronas en la capa de entrada corresponde a la concentración de Sucrosa, Urea y Solución TE, y en la capa de salida a la concentración de biomasa y concentración de THB. En esta aplicación, el numero de neuronas se determino variando el número de nodos de 1 a 6 en la capa oculta. Durante el proceso de entrenamiento, el error cuadrático medio (mean square error) entre el valor experimental y el valor estimado se calcula y se propaga a través de la red utilizando el algoritmo de back propagation. El algoritmo de retropropagación ajusta los pesos en cada capa sucesivamente para reducir el error. Este procedimiento se repite hasta que el error entre el valor experimental y sus correspondientes valores predichos satisface ciertos criterios de error.
+
+## Descripción matematica
