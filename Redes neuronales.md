@@ -23,4 +23,4 @@ Las redes neuronales pueden predecir diversas propiedades químicas de compuesto
 Las redes neuronales se aplican en la interpretación de datos espectroscópicos, como espectros de resonancia magnética nuclear (RMN) o espectros infrarrojos (IR), para identificar y caracterizar compuestos químicos. Estas redes pueden acelerar el análisis y mejorar la precisión en la identificación de sustancias químicas complejas.
 
 ## Esquema general de las matematicas involucradas en las redes neuronales
-![esquemared](https://github.com/julioelias-o/MCD/assets/134743799/00c7b737-889d-4ff2-9539-4fcb23c6b7cb)
+![persep](https://github.com/julioelias-o/MCD/assets/134743799/5c0a7dce-3a35-4bfc-93bb-1faaa3060753)
