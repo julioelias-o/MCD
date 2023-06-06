@@ -7,16 +7,16 @@ Uno de los principales factores que impide la aplicación comercial de PHB es su
 Se han utilizado varios enfoques para la optimización del proceso de producción de PHB, el tradicional que es mediante la variación de las concentraciones de los sustratos en el medio, una a la vez, pero resulta en un proceso laborioso y lento. La optimización de las variables del medio para que se pueda desarrollar el bioproceso, tiene que ser considerado bajo el análisis estratégico para una producción de PHB rentable. Con este proyecto se pretende desarrollar un modelo de redes neuronales para encontrar la concentración optima de dichas variables, que lleven a una producción de PHB lo más alta posible.
 
 ## Modelado de redes neuronales artificiales para la optimización de las variables del medio
-Para la realización de este proyecto se utilizó una arquitectura feedfoward, conocida como multilayer perceptron (MLP), con el algoritmo de aprendizaje backpropagation, para construir los modelos predictivos con concentraciones de tres variables en el medio como input, y las concentraciones de biomasa y PHB como output.
+Para la realización de este proyecto se utilizó una arquitectura feedfoward, conocida como multilayer perceptron (MLP), con el algoritmo de aprendizaje backpropagation, para construir los modelos predictivos con concentraciones de tres variables en el medio como input, y las concentraciones de biomasa y PHB como output. Para la estimación del error, se implemento el error cuadratico medio (mean square error) y se utilizó una función de activación sigmoide.
 
 Todas las entradas y salidas se normalizan para garantizar la uniformidad durante el proceso de entrenamiento. Después del proceso de entrenamiento, el valor optimizado de la variable se vuelve a reescalar para obtener las unidades deseadas.
 
 ![image](https://github.com/julioelias-o/MCD/assets/134743799/e5675aad-f845-4508-8c01-ef7ee55a85b0)
 ![image](https://github.com/julioelias-o/MCD/assets/134743799/50adbd38-162d-4fa3-b7f9-6710aec5213a)
 ## Esquema general de la red neuronal
-![Diagramas de flujo](https://github.com/julioelias-o/MCD/assets/134743799/64d5c8f7-6032-4e8b-bf3a-2bf0e6583a1a)
+![Diagramas de flujo (1)](https://github.com/julioelias-o/MCD/assets/134743799/106747ca-1ff5-467c-a0e1-d18fa8038b43)
 
-El número de neuronas en la capa de entrada corresponde a los valores normalizados de la concentración de Sucrosa, Urea y Solución TE, y en la capa de salida a los de la concentración de biomasa y concentración de THB. El numero de neuronas se determinó variando el número de nodos de 1 a 6 en la capa oculta. Durante el proceso de entrenamiento, el error cuadrático medio (mean square error) entre el valor experimental y el valor estimado se calcula y se propaga a través de la red utilizando el algoritmo de backpropagation. El algoritmo de retropropagación ajusta los pesos en cada capa sucesivamente para reducir el error. Este procedimiento se repite hasta que el error entre el valor experimental y sus correspondientes valores predichos satisface ciertos criterios de error.
+El número de neuronas en la capa de entrada corresponde a los valores normalizados de la concentración de Sucrosa, Urea y Solución TE, y en la capa de salida a los de la concentración de biomasa y concentración de THB. El numero de neuronas en la capa oculta fue variando del 1 al 6 hasta encontrar la que diera mejores resultados. Durante el proceso de entrenamiento, el error cuadrático medio (mean square error) entre el valor experimental y el valor estimado se calcula y se propaga a través de la red utilizando el algoritmo de backpropagation. El algoritmo de retropropagación ajusta los pesos en cada capa sucesivamente para reducir el error. Este procedimiento se repite hasta que el error entre el valor experimental y sus correspondientes valores predichos satisface ciertos criterios de error.
 
 ## Descripción matematica
 Inicialmente, se introducen pesos y sesgos de manera aleatoria para cada conexión entre los perceptrones en las 3 capas de la red (capa de entrada, capa oculta y capa de salida).
@@ -53,25 +53,25 @@ __y__ es la salida predicha por el modelo.
 
 __&#x0233;__ es el valor deseado o verdadero correspondiente a cada muestra.
 
-El siguiente paso es minimizar la función de perdida, esto es clave para ajustar los pesos de la red neuronal. Esto se logra mediante la retropropagación del error (Backpropagation). Primero, se calcula el gradiente local en la capa de salida, este gradiente se basa en la derivada parcial de la función de pérdida y la derivada de la función de activación de la capa de salida, Después, se propaga el gradiente desde la capa de salida hacia las capas anteriores de la red neuronal, de ahí el nombre "backpropagation". Paa cada neurona en las capas ocultas y de entrada, calculamos el gradiente local (δ) utilizando el gradiente anteriormente calculado (propagado desde las capas superiores) y la derivada de la función de activación (f') para esa neurona.
+El siguiente paso es minimizar la función de perdida, esto es clave para ajustar los pesos de la red neuronal. Esto se logra mediante la retropropagación del error (Backpropagation). Primero, se calcula el gradiente local en la capa de salida, este gradiente se basa en la derivada parcial de la función de pérdida y la derivada de la función de activación de la capa de salida, Después, se propaga este gradiente desde la capa de salida hasta la capa de entrada de la red neuronal, de ahí el nombre "backpropagation". Para cada neurona en las capas ocultas y las de entrada, se calcula el gradiente local utilizando el gradiente anteriormente calculado (propagado desde las capas superiores) y la derivada de la función de activación (f') para cada neurona. En la siguiente imagen se puede visualizar mejor lo que ocurre desde la perspectiva de una neurona.
 
+![image](https://github.com/julioelias-o/MCD/assets/134743799/43bae897-efb3-48bd-81ce-7a0224f2d484)
 
-donde se calculan las derivadas parciales del error con respecto a los pesos y sesgos de la red neuronal utilizando la regla de la cadena. Actualizamos los pesos y sesgos utilizando el algoritmo de descenso de gradiente, que ajusta los valores en la dirección opuesta al gradiente para minimizar la función de pérdida. La actualización de los pesos y sesgos se realiza mediante la siguiente fórmula:
-w_nuevo = w_actual - tasa_aprendizaje * dE/dw
-Donde w_nuevo es el nuevo valor del peso, w_actual es el valor actual del peso, tasa_aprendizaje es una constante que controla la velocidad de aprendizaje, y dE/dw es la derivada parcial del error con respecto a un peso específico.
+Los pesos se actualizan utilizando la regla del descenso de gradiente. La nueva actualización del peso se calcula restando el producto del gradiente y la tasa de aprendizaje, al peso actual.
 
-![image](https://github.com/julioelias-o/MCD/assets/134743799/3e042afa-bd90-4df7-bb5c-53b7e3273d12)
+![image](https://github.com/julioelias-o/MCD/assets/134743799/7c3fdbb6-2019-4b30-a515-f4eebdb191c5)
 
-La idea central es que, a traves de un conjunto completo de datos, se minimicen los errores que la red pueda cometer. Para optimizar las pérdidas de la red, se necesita encontrar un conjunto de pesos (w) que minimicen la funcion de pérdida
+Donde: 
+
+__W__ es el peso
+
+__n__ es la tasa de aprendizaje y determina el tamaño del paso que se toma en la dirección opuesta al gradiente.
+
+El descenso de gradiente es un proceso iterativo que busca minimizar el error gradualmente ajustando los pesos de la red en la dirección opuesta al gradiente de la función de pérdida. La idea central es que, a traves de un conjunto completo de datos, se minimicen los errores que la red pueda cometer. Para optimizar las pérdidas de la red, se necesita encontrar un conjunto de pesos (w) que minimicen la funcion de pérdida.
 
 ![image](https://github.com/julioelias-o/MCD/assets/134743799/2a7e8dfb-c1e3-4c4e-8d6d-85ffb55eb6ab)
 
-****************Siendo la funcion de pérdida una funcion continua, es posible calcular las derivadas de los puntos en este espacio. Para saber como la pérdida en la red esta cambiando, se puede calcular un gradiente con puntos en la red y saber en que direccionalidad se debe de seguir para llegar al valor minimo de la funcion. De esta forma, se repiten los calculos de gradiente con multiples valores de w (pesos) y se ajustan al propagarse por la red neuronal, una y otra vez hasta converger en un minimo. 
-
-Una vez terminado este proceso de entrenamiento, que puede verse como el ajuste de estos pesos en la red neuronal, osea encontrar una combinación de pesos que lleven a la red a hacer predicciónes lo más cercanas a la realidad posible.
-
 ## Resultado en la optimización de la producción de PHB
-En esta aplicación, se tomaron componentes del medio como parametros para los inputs, consto de 20 sets de valores iniciales. Una vez entrenado el modelo, se comparo con los valores experimentales demostrando muy buenas estimaciones de la concentración final de PHB y de biomasa. 
+![asdfasdfasdfsdfs](https://github.com/julioelias-o/MCD/assets/134743799/d4d3e733-0cb8-4be9-aa67-88d54ab940a5)
 
-![res](https://github.com/julioelias-o/MCD/assets/134743799/fef303b5-f4aa-466d-9ad3-d05fd068d327)
-
+En esta aplicación, se tomaron componentes del medio como parametros para los inputs, consto de 20 sets de valores iniciales. Una vez entrenado el modelo, se comparo con los valores experimentales demostrando buenas estimaciones de la concentración final de PHB y de biomasa. 
