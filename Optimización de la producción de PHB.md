@@ -29,9 +29,9 @@ Dado un conjunto de datos de entrada, se propagan los valores a través de la re
 
 Donde:
 
-*f(x)* es el valor de salida de la función sigmoide para un valor de entrada x
+__f(x)__ es el valor de salida de la función sigmoide para un valor de entrada x
 
-e* es la base del logaritmo natural
+__e__ es la base del logaritmo natural
 
 __x__ es el valor de entrada al que se aplica la función sigmoide.
 
@@ -40,19 +40,26 @@ El propósito de incluir una función de activación en la red es introducir no 
 ![image](https://github.com/julioelias-o/MCD/assets/134743799/9d731344-2454-4ee5-8f86-ec24538c47af)
 
 Posteriormente, se hace un calculo de la diferencia entre las salidas obtenidas por la red neuronal y las salidas reales o deseadas del conjunto de datos. Este calculo se conoce como función de pérdida, y una comúnmente utilizada es el error cuadrático medio (MSE, por sus siglas en inglés), que se calcula mediante la siguiente fórmula:
-E = (1 / N) * sum((y - y_deseada)^2)
+
+![image](https://github.com/julioelias-o/MCD/assets/134743799/6f289ce8-7d1b-4643-8698-9f1b895184b8)
 
 Donde:
 
-__E__ es el error cuadrático medio.
+__MSE__ es el error cuadrático medio.
 
-__N__ es el número de muestras en el conjunto de datos.
+__n__ es el número de muestras en el conjunto de datos.
 
 __y__ es la salida predicha por el modelo.
 
-__y_deseada__ es el valor deseado o verdadero correspondiente a cada muestra.
+__&#x0233;__ es el valor deseado o verdadero correspondiente a cada muestra.
 
-Para comenzar el entrenamiento de la red, se necesita una funcion de pérdida, que va a considerar las predicciones generadas por la red, contra la predicción verdadera o el resultado esperado. Entonces, esta diferencia entre las predicciones dan una nocion de que tanta pérdida tiene la red.
+El siguiente paso es minimizar la función de perdida, esto es clave para ajustar los pesos de la red neuronal. Esto se logra mediante la retropropagación del error (Backpropagation). Para cada peso en la red neuronal, se calcula la derivada parcial del error con respecto a ese peso. Esto se realiza en sentido inverso, de la capa de salida a la capa de entrada, de ahí su nombre. Para cada neurona, se calcula el gradiente local, que es el producto de la derivada de la función de activación con respecto a la suma ponderada de las entradas y el gradiente anterior (propagado desde las capas superiores).
+La derivada de la función de activación se denota como f'(z), donde z es la suma ponderada de las entradas a la neurona.
+El gradiente local se calcula como: δ = f'(z) * gradiente_anterior
+
+donde se calculan las derivadas parciales del error con respecto a los pesos y sesgos de la red neuronal utilizando la regla de la cadena. Actualizamos los pesos y sesgos utilizando el algoritmo de descenso de gradiente, que ajusta los valores en la dirección opuesta al gradiente para minimizar la función de pérdida. La actualización de los pesos y sesgos se realiza mediante la siguiente fórmula:
+w_nuevo = w_actual - tasa_aprendizaje * dE/dw
+Donde w_nuevo es el nuevo valor del peso, w_actual es el valor actual del peso, tasa_aprendizaje es una constante que controla la velocidad de aprendizaje, y dE/dw es la derivada parcial del error con respecto a un peso específico.
 
 ![image](https://github.com/julioelias-o/MCD/assets/134743799/3e042afa-bd90-4df7-bb5c-53b7e3273d12)
 
