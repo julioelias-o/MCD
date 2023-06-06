@@ -53,9 +53,8 @@ __y__ es la salida predicha por el modelo.
 
 __&#x0233;__ es el valor deseado o verdadero correspondiente a cada muestra.
 
-El siguiente paso es minimizar la función de perdida, esto es clave para ajustar los pesos de la red neuronal. Esto se logra mediante la retropropagación del error (Backpropagation). Para cada peso en la red neuronal, se calcula la derivada parcial del error con respecto a ese peso. Esto se realiza en sentido inverso, de la capa de salida a la capa de entrada, de ahí su nombre. Para cada neurona, se calcula el gradiente local, que es el producto de la derivada de la función de activación con respecto a la suma ponderada de las entradas y el gradiente anterior (propagado desde las capas superiores).
-La derivada de la función de activación se denota como f'(z), donde z es la suma ponderada de las entradas a la neurona.
-El gradiente local se calcula como: δ = f'(z) * gradiente_anterior
+El siguiente paso es minimizar la función de perdida, esto es clave para ajustar los pesos de la red neuronal. Esto se logra mediante la retropropagación del error (Backpropagation). Primero, se calcula el gradiente local en la capa de salida, este gradiente se basa en la derivada parcial de la función de pérdida y la derivada de la función de activación de la capa de salida, Después, se propaga el gradiente desde la capa de salida hacia las capas anteriores de la red neuronal, de ahí el nombre "backpropagation". Paa cada neurona en las capas ocultas y de entrada, calculamos el gradiente local (δ) utilizando el gradiente anteriormente calculado (propagado desde las capas superiores) y la derivada de la función de activación (f') para esa neurona.
+
 
 donde se calculan las derivadas parciales del error con respecto a los pesos y sesgos de la red neuronal utilizando la regla de la cadena. Actualizamos los pesos y sesgos utilizando el algoritmo de descenso de gradiente, que ajusta los valores en la dirección opuesta al gradiente para minimizar la función de pérdida. La actualización de los pesos y sesgos se realiza mediante la siguiente fórmula:
 w_nuevo = w_actual - tasa_aprendizaje * dE/dw
